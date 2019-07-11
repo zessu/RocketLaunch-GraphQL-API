@@ -6,10 +6,12 @@
   "author": "Wambua Makenzi <zessu>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.ts"
   },
   "dependencies": {
     "apollo-server": "^2.6.8",
-    "graphql": "^14.4.2"
+    "graphql": "^14.4.2",
+    "mongo": "^0.1.0",
+    "typeorm": "^0.2.18"
   }
 }

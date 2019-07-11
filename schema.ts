@@ -1,9 +1,6 @@
-const {
-  gql
-} = require('apollo-server');
+import { gql } from 'apollo-server';
 
-
-const typeDefs = gql `
+export const typeDefs = gql`
 type Rocket {
   id: ID!
   name: String

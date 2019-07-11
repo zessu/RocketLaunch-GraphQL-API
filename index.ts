@@ -1,10 +1,12 @@
 const {
   ApolloServer
 } = require('apollo-server');
-const typeDefs = require('./schema');
+import { typeDefs } from './schema';
+import { resolvers } from './resolvers';
 
 const server = new ApolloServer({
-  typeDefs
+  typeDefs,
+  resolvers
 });
 
 server.listen().then(({
