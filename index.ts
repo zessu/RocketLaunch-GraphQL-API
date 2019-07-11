@@ -3,6 +3,11 @@ const {
 } = require('apollo-server');
 import { typeDefs } from './schema';
 import { resolvers } from './resolvers';
+import { createConnection } from 'typeorm';
+
+(async () => {
+  const connection = await createConnection();
+})();
 
 const server = new ApolloServer({
   typeDefs,
