@@ -7,7 +7,7 @@ import {
   JoinColumn,
   JoinTable
 } from 'typeorm';
-import { Participant } from './participant.entity';
+import { Passenger } from './passenger.entity';
 import { Mission } from './mission.entity';
 import { Rocket } from './rocket.entity';
 
@@ -27,7 +27,10 @@ export class Launch {
   @JoinColumn()
   rocket: Rocket;
 
-  @ManyToOne(type => Participant, participant => participant.trips)
+  @Column()
+  isBooked: Boolean;
+
+  @ManyToOne(type => Passenger, passenger => passenger.trips)
   @JoinTable()
-  participants: Array<Participant>;
+  passengers: Array<Passenger>;
 }

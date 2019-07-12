@@ -38,20 +38,26 @@ type TripUpdateResponse {
 }
 
 type Query {
+  # Get all Launches
   launches: [Launch]!
+
+  # Get launch by ID
   launch(id: ID!): Launch
+
   # Queries for the current user
-  me: User
+  passengers: [User]!
+  passenger(id: ID!): User
 }
 
 type Mutation {
-  # if false, booking trips failed -- check errors
+  # if false, booking trips failed -- check error message
   bookTrips(launchIds: [ID]!): TripUpdateResponse!
 
-  # if false, cancellation failed -- check errors
+  # if false, cancellation failed -- check error message
   cancelTrip(launchId: ID!): TripUpdateResponse!
 
-  login(email: String): String # login token
+  # login token
+  login(email: String): String
 }
 `;
 

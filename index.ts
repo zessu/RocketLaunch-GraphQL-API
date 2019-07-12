@@ -5,13 +5,16 @@ import { typeDefs } from './schema';
 import { resolvers } from './resolvers';
 import { createConnection } from 'typeorm';
 
+let connection: any;
+
 (async () => {
-  const connection = await createConnection();
+  connection = await createConnection();
 })();
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  connection
 });
 
 server.listen().then(({

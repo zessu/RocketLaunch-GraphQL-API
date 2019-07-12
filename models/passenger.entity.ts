@@ -1,7 +1,7 @@
 import { PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
 import { Launch } from './launch.entity';
 
-export class Participant {
+export class Passenger {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -14,6 +14,6 @@ export class Participant {
   @Column()
   lastname: string;
 
-  @ManyToMany(type => Launch, launch => launch.participants)
+  @ManyToMany(type => Launch, launch => launch.passengers)
   trips: Array<Launch>;
 }
