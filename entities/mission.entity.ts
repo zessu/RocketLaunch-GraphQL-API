@@ -1,13 +1,15 @@
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn
+  BaseEntity,
+  ObjectIdColumn,
+  ObjectID
 } from 'typeorm';
 
 @Entity()
-export class Mission {
-  @PrimaryGeneratedColumn()
-  id: number;
+export class Mission extends BaseEntity {
+  @ObjectIdColumn()
+  _id: ObjectID;
 
   @Column()
   description: string;

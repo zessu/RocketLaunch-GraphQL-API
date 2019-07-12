@@ -1,21 +1,22 @@
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn,
-  ManyToOne,
   OneToOne,
   JoinColumn,
   JoinTable,
-  ManyToMany
+  ManyToMany,
+  BaseEntity,
+  ObjectIdColumn,
+  ObjectID,
 } from 'typeorm';
 import { Passenger } from './passenger.entity';
 import { Mission } from './mission.entity';
 import { Rocket } from './rocket.entity';
 
 @Entity()
-export class Launch {
-  @PrimaryGeneratedColumn()
-  id: number;
+export class Launch extends BaseEntity {
+  @ObjectIdColumn()
+  _id: ObjectID;
 
   @Column()
   site: string;

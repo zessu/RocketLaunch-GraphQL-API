@@ -6,5 +6,5 @@
   "username": "root",
   "password": "",
   "database": "rocketlaunches",
-  "entities": ["/entities/**/*.entity.ts"]
+  "entities": ["entities/**/*.entity.ts"]
 }

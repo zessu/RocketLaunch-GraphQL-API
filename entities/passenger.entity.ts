@@ -1,9 +1,10 @@
-import { PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
+import { Column, ManyToMany, Entity, BaseEntity, ObjectIdColumn, ObjectID } from 'typeorm';
 import { Launch } from './launch.entity';
 
-export class Passenger {
-  @PrimaryGeneratedColumn()
-  id: number;
+@Entity()
+export class Passenger extends BaseEntity {
+  @ObjectIdColumn()
+  _id: ObjectID;
 
   @Column()
   email: string;
@@ -13,6 +14,9 @@ export class Passenger {
 
   @Column()
   lastname: string;
+
+  @Column()
+  password: string;
 
   @ManyToMany(() => Launch)
   trips: Launch[];

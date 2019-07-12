@@ -1,13 +1,15 @@
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn
+  BaseEntity,
+  ObjectIdColumn,
+  ObjectID,
 } from 'typeorm';
 
 @Entity()
-export class Rocket {
-  @PrimaryGeneratedColumn()
-  id: number;
+export class Rocket extends BaseEntity {
+  @ObjectIdColumn()
+  id: ObjectID;
 
   @Column()
   name: string;

@@ -32,7 +32,15 @@ export const resolvers = {
     },
   },
   Mutation: {
-    login: (_, { email, password }) => { }
+    login: (_, { email, password }) => { },
+    createPassenger: (_, { input }) => {
+      const newPassenger = new Passenger();
+      newPassenger.firstname = input.firstname;
+      newPassenger.lastname = input.lastname;
+      newPassenger.email = input.email;
+      newPassenger.password = input.password;
+      return getRepository(Passenger).save(newPassenger);
+    }
   },
   Launch: {
     mission: (parent, { id }) => { },
