@@ -14,7 +14,10 @@ let connection: any;
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  connection
+  context: async ({ req }) => {
+    const auth = (req.headers && req.headers.authorization) || '';
+    return { auth, connection }
+  }
 });
 
 server.listen().then(({
