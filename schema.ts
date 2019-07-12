@@ -21,8 +21,8 @@ type Launch {
   id: ID!
   site: String
   mission: Mission
-  rocket: Rocket
   isBooked: Boolean!
+  rocket: Rocket
   passengers: [Passenger]!
 }
 

@@ -6,38 +6,41 @@ import { Rocket } from './entities/rocket.entity';
 
 export const resolvers = {
   Query: {
-    launches: (parent, args, context, info) => {
-      return getRepository(Launch).find();
+    launches: (_, { id }) => {
+      return getRepository(Launch).findOne(id);
     },
-    launch: (parent, args, context, info) => {
-      return getRepository(Launch).findOne(args.id);
+    launch: (_, { id }) => {
+      return getRepository(Launch).findOne(id);
     },
-    passengers: (parent, args, context, info) => {
+    passengers: (_, { id }) => {
       return getRepository(Passenger).find();
     },
-    passenger: (parent, args, context, info) => {
-      return getRepository(Passenger).findOne(args.id);
+    passenger: (_, { id }) => {
+      return getRepository(Passenger).findOne(id);
     },
-    rockets: (parent, args, context, info) => {
+    rockets: (_, { id }) => {
       return getRepository(Rocket).find();
     },
-    rocket: (parent, args, context, info) => {
-      return getRepository(Rocket).findOne(args.id);
+    rocket: (_, { id }) => {
+      return getRepository(Rocket).findOne(id);
     },
-    missions: (parent, args, context, info) => {
+    missions: (_, { id }) => {
       return getRepository(Mission).find();
     },
-    mission: (parent, args, context, info) => {
-      return getRepository(Mission).findOne(args.id);
+    mission: (_, { id }) => {
+      return getRepository(Mission).findOne(id);
     },
   },
+  Mutation: {
+    login: (_, { email, password }) => { }
+  },
   Launch: {
-    mission: (parent, args, context, info) => { },
-    rocket: (parent, args, context, info) => { },
-    passengers: (parent, args, context, info) => { },
+    mission: (parent, { id }) => { },
+    rocket: (parent, { id }) => { },
+    passengers: (parent, { id }) => { },
   },
   Passenger: {
-    trips: (parent, args, context, info) => { },
+    trips: (parent, { id }) => { },
   }
 };
 

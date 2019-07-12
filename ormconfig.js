@@ -8,5 +8,6 @@ module.exports = {
   "database": "rocketlaunches",
   "entities": [
     __dirname + "entities/**/*.entity.ts"
-  ]
+  ],
+  "dropSchema": true
 }
