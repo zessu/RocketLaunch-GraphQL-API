@@ -1,9 +1,12 @@
 {
   "name": "default",
-  "type": "mongo",
+  "type": "mongodb",
   "host": "localhost",
-  "port": 3306,
-  "username": "test",
-  "password": "test",
-  "database": "rocketlaunches"
+  "port": 27017,
+  "username": "root",
+  "password": "",
+  "database": "rocketlaunches",
+  "entities": [
+    "src/entity/*.js"
+  ]
 }

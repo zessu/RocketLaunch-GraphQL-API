@@ -43,9 +43,9 @@ type Query {
   passengers: [Passenger]!
   passenger(id: ID!): Passenger
   rockets: [Rocket]!
-  rocket(id: Id!): Rocket;
-  missions: [Mission],
-  mission(id: Id!): Mission
+  rocket(id: ID!): Rocket
+  missions: [Mission]
+  mission(id: ID!): Mission
 }
 
 type Mutation {
@@ -59,5 +59,3 @@ type Mutation {
   login(email: String): String
 }
 `;
-
-module.exports = typeDefs;
