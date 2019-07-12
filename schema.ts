@@ -7,7 +7,7 @@ type Rocket {
   type: String
 }
 
-type User {
+type Passenger {
   id: ID!
   email: String!
   trips: [Launch]!
@@ -15,12 +15,6 @@ type User {
 
 type Mission {
   name: String
-  missionPatch(size: PatchSize): String
-}
-
-enum PatchSize {
-  SMALL
-  LARGE
 }
 
 type Launch {
@@ -29,6 +23,7 @@ type Launch {
   mission: Mission
   rocket: Rocket
   isBooked: Boolean!
+  passengers: [Passenger]!
 }
 
 type TripUpdateResponse {
@@ -44,9 +39,13 @@ type Query {
   # Get launch by ID
   launch(id: ID!): Launch
 
-  # Queries for the current user
-  passengers: [User]!
-  passenger(id: ID!): User
+  # Queries for the current Passenger
+  passengers: [Passenger]!
+  passenger(id: ID!): Passenger
+  rockets: [Rocket]!
+  rocket(id: Id!): Rocket;
+  missions: [Mission],
+  mission(id: Id!): Mission
 }
 
 type Mutation {
