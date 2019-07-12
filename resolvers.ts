@@ -1,8 +1,8 @@
 import { getRepository } from 'typeorm';
-import { Launch } from './models/launch.entity';
-import { Mission } from './models/mission.entity';
-import { Passenger } from './models/passenger.entity';
-import { Rocket } from './models/rocket.entity';
+import { Launch } from './entities/launch.entity';
+import { Mission } from './entities/mission.entity';
+import { Passenger } from './entities/passenger.entity';
+import { Rocket } from './entities/rocket.entity';
 
 export const resolvers = {
   Query: {

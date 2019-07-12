@@ -6,7 +6,7 @@
   "author": "Wambua Makenzi <zessu>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ts-node ./index.ts"
+    "start": "nodemon --watch './**/*.ts' --ignore './**/*.spec.ts' --exec ts-node ./index.ts"
   },
   "dependencies": {
     "apollo-server": "^2.6.8",

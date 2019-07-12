@@ -1,12 +1,12 @@
-{
+module.exports = {
   "name": "default",
   "type": "mongodb",
   "host": "localhost",
-  "port": 27017,
+  "port": "27017",
   "username": "root",
   "password": "",
   "database": "rocketlaunches",
   "entities": [
-    "src/entity/*.js"
+    __dirname + "entities/**/*.entity.ts"
   ]
 }

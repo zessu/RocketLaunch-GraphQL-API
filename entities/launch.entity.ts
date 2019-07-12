@@ -5,7 +5,8 @@ import {
   ManyToOne,
   OneToOne,
   JoinColumn,
-  JoinTable
+  JoinTable,
+  ManyToMany
 } from 'typeorm';
 import { Passenger } from './passenger.entity';
 import { Mission } from './mission.entity';
@@ -19,18 +20,18 @@ export class Launch {
   @Column()
   site: string;
 
-  @OneToOne(type => Mission)
+  @OneToOne(() => Mission)
   @JoinColumn()
   mission: Mission;
 
-  @OneToOne(type => Rocket)
+  @OneToOne(() => Rocket)
   @JoinColumn()
   rocket: Rocket;
 
   @Column()
   isBooked: Boolean;
 
-  @ManyToOne(type => Passenger, passenger => passenger.trips)
+  @ManyToMany(() => Passenger)
   @JoinTable()
-  passengers: Array<Passenger>;
+  passengers: Passenger[];
 }
