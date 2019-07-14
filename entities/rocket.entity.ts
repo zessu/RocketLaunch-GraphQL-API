@@ -5,7 +5,6 @@ import {
   ObjectIdColumn,
   ObjectID,
   OneToMany,
-  ManyToOne
 } from 'typeorm';
 import { Launch } from './launch.entity';
 import { Mission } from './mission.entity';
@@ -26,5 +25,4 @@ export class Rocket extends BaseEntity {
 
   @OneToMany(type => Mission, mission => mission.rocket)
   missions: Array<Mission>
-
 }

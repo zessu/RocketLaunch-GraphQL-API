@@ -2,12 +2,16 @@ const {
   ApolloServer
 } = require('apollo-server');
 import { typeDefs } from './schema';
-import { resolvers } from './resolvers';
-import { createConnection } from 'typeorm';
+import {
+  resolvers
+} from './resolvers';
+import {
+  createConnection
+} from 'typeorm';
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
+  resolvers
 });
 
 createConnection().then(() => {
