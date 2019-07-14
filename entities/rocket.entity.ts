@@ -4,7 +4,11 @@ import {
   BaseEntity,
   ObjectIdColumn,
   ObjectID,
+  OneToMany,
+  ManyToOne
 } from 'typeorm';
+import { Launch } from './launch.entity';
+import { Mission } from './mission.entity';
 
 @Entity()
 export class Rocket extends BaseEntity {
@@ -16,4 +20,11 @@ export class Rocket extends BaseEntity {
 
   @Column()
   type: string;
+
+  @OneToMany(type => Launch, launch => launch.rocket)
+  launches: Array<Launch>
+
+  @OneToMany(type => Mission, mission => mission.rocket)
+  missions: Array<Mission>
+
 }

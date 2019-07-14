@@ -8,6 +8,7 @@ import {
   BaseEntity,
   ObjectIdColumn,
   ObjectID,
+  ManyToOne,
 } from 'typeorm';
 import { Passenger } from './passenger.entity';
 import { Mission } from './mission.entity';
@@ -25,14 +26,13 @@ export class Launch extends BaseEntity {
   @JoinColumn()
   mission: Mission;
 
-  @OneToOne(() => Rocket)
-  @JoinColumn()
-  rocket: Rocket;
-
   @Column()
   isBooked: Boolean;
 
   @ManyToMany(() => Passenger)
   @JoinTable()
   passengers: Passenger[];
+
+  @ManyToOne(type => Rocket, rocket => rocket.launches)
+  rocket: Rocket;
 }

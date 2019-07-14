@@ -3,8 +3,10 @@ import {
   Column,
   BaseEntity,
   ObjectIdColumn,
-  ObjectID
+  ObjectID,
+  ManyToOne
 } from 'typeorm';
+import { Rocket } from './rocket.entity';
 
 @Entity()
 export class Mission extends BaseEntity {
@@ -12,5 +14,11 @@ export class Mission extends BaseEntity {
   _id: ObjectID;
 
   @Column()
+  name: string;
+
+  @Column()
   description: string;
+
+  @ManyToOne(type => Rocket, rocket => rocket.missions)
+  rocket: Rocket;
 }
