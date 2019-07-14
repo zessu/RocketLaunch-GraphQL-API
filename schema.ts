@@ -8,6 +8,12 @@ type Rocket {
   type: String!
 }
 
+type LaunchSite {
+  _id: ID!
+  name: String!
+  location: String!
+}
+
 type Passenger {
   _id: ID!
   email: String!
@@ -70,9 +76,17 @@ missions: [Mission]
 
 # Queries for a mission given an ID
 mission(id: ID!): Mission
+
+# Queries for all existent launch sites
+launchSites: [LaunchSite]
+
+# Query for a launch site by ID
+launchSite(id: ID!): LaunchSite
+
 }
 
 type Mutation {
+
 # if false, booking trips failed-- check error message
 bookTrips(launchIds: [ID]!): OperationResponse!
 
@@ -91,5 +105,9 @@ createMission(name: String!, description: String!, rocketID: ID!): Mission
 # register a rocket for trips and missions
 createRocket(name: String!, type:String!): Rocket
 
+# register a launch site
+createSite(name: String!, site: String!): LaunchSite
+
+createLaunch(siteID: ID!, rocketID: ID!, missionID: ID!): LaunchSite
 }
 `;

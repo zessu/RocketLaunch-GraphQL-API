@@ -3,13 +3,13 @@ import { Launch } from './entities/launch.entity';
 import { Mission } from './entities/mission.entity';
 import { Passenger } from './entities/passenger.entity';
 import { Rocket } from './entities/rocket.entity';
-import { AuthenticationError, UserInputError } from 'apollo-server';
 import { GraphQLError } from 'graphql';
+import { LaunchSite } from './entities/site.entity';
 
 export const resolvers = {
   Query: {
     launches: (_, { id }) => {
-      return getRepository(Launch).findOne(id);
+      return getRepository(Launch).find();
     },
     launch: (_, { id }) => {
       return getRepository(Launch).findOne(id);
@@ -31,6 +31,12 @@ export const resolvers = {
     },
     mission: (_, { id }) => {
       return getRepository(Mission).findOne(id);
+    },
+    launchSites: (_, { id }) => {
+      return getRepository(LaunchSite).find();
+    },
+    launchSite: (_, { id }) => {
+      return getRepository(LaunchSite).findOne(id);
     },
   },
   Mutation: {
@@ -62,10 +68,21 @@ export const resolvers = {
         return new GraphQLError('Rocket does not exist');
       }
       mission.rocket = rocketID;
-      const nr = await getRepository(Mission).save(mission);
-      console.log(nr);
-      return nr;
+      return await getRepository(Mission).save(mission);
     },
+    createSite: async (_, { name, location }) => {
+      const launchSite = new LaunchSite();
+      launchSite.name = name;
+      launchSite.location = location;
+      return await getRepository(LaunchSite).save(launchSite);
+    },
+    createLaunch: async (_id, { siteID, rocketID, missionID }) => {
+      const newLaunch = new Launch();
+      newLaunch.mission = missionID;
+      newLaunch.rocket = rocketID;
+      newLaunch.launchSite = siteID;
+      return await getRepository(Launch).save(newLaunch);
+    }
   },
   Launch: {
     mission: (parent, { id }) => { },
@@ -75,10 +92,10 @@ export const resolvers = {
   Mission: {
     rocket: async (parent) => {
       return await getRepository(Rocket).findOne(parent.rocket);
-    },
+    }
   },
   Passenger: {
     trips: (parent, { id }) => { },
   }
-};
+}
 
