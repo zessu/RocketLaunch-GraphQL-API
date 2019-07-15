@@ -40,11 +40,11 @@ type Mission {
 
 type Launch {
   _id: ID!
-  site: String!
   isBooked: Boolean!
   mission: Mission
   rocket: Rocket
   passengers: [Passenger]
+  site: LaunchSite
 }
 
 type OperationResponse {

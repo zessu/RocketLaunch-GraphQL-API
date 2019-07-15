@@ -85,9 +85,15 @@ export const resolvers = {
     }
   },
   Launch: {
-    mission: (parent, { id }) => { },
-    rocket: (parent, { id }) => { },
-    passengers: (parent, { id }) => { },
+    mission: async (parent, { id }) => {
+      return await getRepository(Launch).findOne(parent.mission);
+    },
+    rocket: async (parent, { id }) => {
+      return await getRepository(Rocket).findOne(parent.rocket);
+    },
+    site: async (parent, { id }) => {
+      return await getRepository(LaunchSite).findOne(parent.launchSite);
+    },
   },
   Mission: {
     rocket: async (parent) => {
